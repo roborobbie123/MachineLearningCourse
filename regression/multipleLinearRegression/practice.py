@@ -29,3 +29,10 @@ y_pred = regressor.predict(X_test)
 np.set_printoptions(precision=2)
 # printing out the prediction and real values in a neat column format side by side
 print(np.concatenate((y_pred.reshape(len(y_pred), 1), y_test.reshape(len(y_test), 1)), 1))
+
+# Making a single prediction of profit with R&D=160000, Admin=130000, Market=300000, State=CALIFORNIA
+print(regressor.predict([[1, 0, 0, 160000, 130000, 300000]]))
+
+# Getting equation with coefficients
+print(regressor.coef_)
+print(regressor.intercept_)
