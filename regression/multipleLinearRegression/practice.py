@@ -25,3 +25,7 @@ regressor.fit(X_train, y_train)
 
 # Predict test set results
 y_pred = regressor.predict(X_test)
+# 2 decimal place option
+np.set_printoptions(precision=2)
+# printing out the prediction and real values in a neat column format side by side
+print(np.concatenate((y_pred.reshape(len(y_pred), 1), y_test.reshape(len(y_test), 1)), 1))
