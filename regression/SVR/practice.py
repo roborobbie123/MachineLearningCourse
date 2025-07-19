@@ -27,3 +27,6 @@ print(y)
 from sklearn.svm import SVR
 regressor = SVR(kernel = 'rbf')
 regressor.fit(X, y)
+
+# Predicting a new result and reversing the feature scaling for y
+scaler_y.inverse_transform(regressor.predict(scaler_X.transform([[6.5]])).reshape(-1, 1))
