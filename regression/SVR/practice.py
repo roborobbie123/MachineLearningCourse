@@ -30,3 +30,22 @@ regressor.fit(X, y)
 
 # Predicting a new result and reversing the feature scaling for y
 scaler_y.inverse_transform(regressor.predict(scaler_X.transform([[6.5]])).reshape(-1, 1))
+
+# Visualizing SVR results
+# reverse feature scaling for x and y
+plt.scatter(scaler_X.inverse_transform(X), scaler_y.inverse_transform(y), color = 'red')
+plt.plot(scaler_X.inverse_transform(X), scaler_y.inverse_transform(regressor.predict(X).reshape(-1, 1)), color = 'blue')
+plt.title('Truth or Bluff (SVR)')
+plt.xlabel('Position Level')
+plt.ylabel('Salary')
+plt.show()
+
+# Visualizing SVR results with higher resolution and smoother curve
+X_grid = np.arange(min(scaler_X.inverse_transform(X)), max(scaler_X.inverse_transform(X)), 0.1)
+X_grid = X_grid.reshape((len(X_grid), 1))
+plt.scatter(scaler_X.inverse_transform(X), scaler_y.inverse_transform(y), color = 'red')
+plt.plot(X_grid, scaler_y.inverse_transform(regressor.predict(scaler_X.transform(X_grid)).reshape(-1, 1)), color = 'blue')
+plt.title('Truth or Bluff (SVR)')
+plt.xlabel('Position level')
+plt.ylabel('Salary')
+plt.show()
