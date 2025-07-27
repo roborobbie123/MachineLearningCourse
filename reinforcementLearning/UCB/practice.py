@@ -15,6 +15,7 @@ numbers_of_selections = [0] * d
 sums_of_rewards = [0] * d
 total_reward = 0
 
+# UCB algorithm
 for n in range(0, N):
     ad = 0
     max_upper_bound = 0
@@ -35,9 +36,22 @@ for n in range(0, N):
     total_reward += reward
 
 # Visualizing the results
-plt.hist(ads_selected)
-plt.title('Histogram of ads selections')
-plt.xlabel('Ads')
-plt.ylabel('Number of times each ad was selected')
+# Plot 1: Histogram of selections
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+plt.bar(range(1, d + 1), numbers_of_selections, color='blue', alpha=0.7)
+plt.title('Number of Times Each Ad Was Selected')
+plt.xlabel('Ad')
+plt.ylabel('Selections')
+
+# Plot 2: Rewards per ad
+plt.subplot(1, 2, 2)
+plt.bar(range(1, d + 1), sums_of_rewards, color='green', alpha=0.7)
+plt.title('Total Rewards (Clicks) per Ad')
+plt.xlabel('Ad')
+plt.ylabel('Rewards')
+
+plt.tight_layout()
 plt.show()
         
